@@ -6,11 +6,6 @@ export interface IUser {
 	password: string
 }
 
-export interface IUpdatePassword {
-	currentPassword: string
-	newPassword: string
-}
-
 export interface ISignUpResponse {
 	email: string
 	username: string
