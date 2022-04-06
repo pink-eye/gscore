@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { signIn, signUp } from './thunks'
+import { signIn, signUp, updatePassword, updatePersonal } from './thunks'
 import { IUserState } from './types'
 
 const initialState: IUserState = {
@@ -40,6 +40,38 @@ const userSlice = createSlice({
 				}
 			})
 			.addCase(signIn.rejected, (state, action) => {
+				if (state.isLoading) {
+					state.isLoading = false
+					state.error = action.error
+				}
+			})
+		builder
+			.addCase(updatePersonal.pending, state => {
+				if (!state.isLoading) state.isLoading = true
+			})
+			.addCase(updatePersonal.fulfilled, (state, action) => {
+				if (state.isLoading) {
+					state.isLoading = false
+					state.data = action.payload
+				}
+			})
+			.addCase(updatePersonal.rejected, (state, action) => {
+				if (state.isLoading) {
+					state.isLoading = false
+					state.error = action.error
+				}
+			})
+		builder
+			.addCase(updatePassword.pending, state => {
+				if (!state.isLoading) state.isLoading = true
+			})
+			.addCase(updatePassword.fulfilled, (state, action) => {
+				if (state.isLoading) {
+					state.isLoading = false
+					state.data = action.payload
+				}
+			})
+			.addCase(updatePassword.rejected, (state, action) => {
 				if (state.isLoading) {
 					state.isLoading = false
 					state.error = action.error
