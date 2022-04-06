@@ -2,9 +2,10 @@ import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/
 import { userReducer, tokenReducer, productReducer } from './ducks'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import userApi from './ducks/user/api'
 
 const rootReducer = combineReducers({
-	// [userApi.reducerPath]: userApi.reducer,
+	[userApi.reducerPath]: userApi.reducer,
 	token: tokenReducer,
 	user: userReducer,
 	product: productReducer,

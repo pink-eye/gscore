@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../..'
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'https://gscore-back.herokuapp.com/',
+	baseUrl: 'https://gscore-back.herokuapp.com/api/users',
 	prepareHeaders: (headers, state) => {
 		const token = (state.getState() as RootState).token
 
