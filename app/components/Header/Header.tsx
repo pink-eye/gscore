@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import useAppSelector from '../../hooks/useAppSelector'
+import { useGetMeQuery } from '../../store/ducks/user/api'
 import Container from '../UI/Container'
 import Popup from '../UI/Popup'
 import TextLink from '../UI/TextLink'
 
 const Header = () => {
-	const token = useAppSelector(state => state.token)
+	const { data } = useGetMeQuery(null)
 
 	return (
 		<Root>
@@ -15,10 +16,10 @@ const Header = () => {
 					<TextLink href="/">
 						<img src="/img/logo.svg" alt="The logo of company" />
 					</TextLink>
-					{token && (
+					{data?.username && (
 						<HeaderActions>
 							<TextLink href="/my-subscriptions">My subscriptions</TextLink>
-							<Popup head="Name" />
+							<Popup head={data.username} />
 						</HeaderActions>
 					)}
 				</HeaderContainer>
