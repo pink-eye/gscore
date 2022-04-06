@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { IUpdatePassword, IUser } from '../store/ducks/user/types'
+import { IUser } from '../store/ducks/user/types'
+import { IPasswordsData, IPersonalData } from '../types'
 
 interface Params {
 	token?: string
@@ -19,10 +20,9 @@ const GScoreApi = (params: Params = {}) => {
 
 	const signUp = (user: IUser) => axios.post(`${BASE_URL}/users/sign-up`, user)
 
-	const updatePassword = (passwords: IUpdatePassword) =>
-		axiosAuth.post(`${BASE_URL}/users/update-password`, passwords)
+	const updatePassword = (data: IPasswordsData) => axiosAuth.patch(`${BASE_URL}/users/update-password`, data)
 
-	const updatePersonal = (user: IUser) => axiosAuth.post(`${BASE_URL}/users/`, user)
+	const updatePersonal = (data: IPersonalData) => axiosAuth.patch(`${BASE_URL}/users/`, data)
 
 	const getMe = () => axiosAuth.get(`${BASE_URL}/users/me`)
 
