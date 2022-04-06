@@ -1,10 +1,10 @@
 import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import withAuth from '../../hocs/withAuth'
-import Button from '../UI/Button'
 import Heading from '../UI/Heading'
-import Input from '../UI/Input'
 import 'react-tabs/style/react-tabs.css'
+import Personal from './Personal'
+import Password from './Password'
 
 const Settings = () => {
 	return (
@@ -16,16 +16,10 @@ const Settings = () => {
 					<Tab>Change password</Tab>
 				</TabList>
 				<TabPanel>
-					<h2>Any content 1</h2>
-					<Input placeholder="Username" />
-					<Input placeholder="Email" />
-					<Button>Save</Button>
+					<Personal />
 				</TabPanel>
 				<TabPanel>
-					<h2>Any content 2</h2>
-					<Input placeholder="Current password" />
-					<Input placeholder="New password" />
-					<Button>Save</Button>
+					<Password />
 				</TabPanel>
 			</Tabs>
 		</>
