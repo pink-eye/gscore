@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import Divider from '../UI/Divider'
+import Divider from '../../UI/Divider'
 import useActions from '../../hooks/useActions'
 import { useGetMeQuery } from '../../store/ducks/user/api'
 import Dropdown from './Dropdown'

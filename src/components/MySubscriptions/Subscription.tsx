@@ -2,9 +2,9 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { ISubscription } from '../../types'
 import makeFriendlyDate from '../../utils/makeFriendlyDate'
-import Button from '../UI/Button'
-import Divider from '../UI/Divider'
-import Status from '../UI/Status'
+import Button from '../../UI/Button'
+import Divider from '../../UI/Divider'
+import Status from '../../UI/Status'
 
 interface Props extends ISubscription {
 	isActive?: boolean

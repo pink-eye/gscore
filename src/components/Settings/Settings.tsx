@@ -1,11 +1,11 @@
 import React from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import withAuth from '../../hocs/withAuth'
-import Heading from '../UI/Heading'
+import Heading from '../../UI/Heading'
 import Personal from './Personal'
 import Password from './Password'
 import styled from 'styled-components'
-import Container from '../UI/Container'
+import Container from '../../UI/Container'
 
 const Settings = () => {
 	return (

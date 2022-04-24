@@ -2,8 +2,8 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { IProduct } from '../../types'
 import Card from './Card'
-import Heading from '../UI/Heading'
-import TextLink from '../UI/TextLink'
+import Heading from '../../UI/Heading'
+import TextLink from '../../UI/TextLink'
 
 interface Props {
 	products: IProduct[]

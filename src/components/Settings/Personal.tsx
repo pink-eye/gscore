@@ -5,9 +5,9 @@ import useAppDispatch from '../../hooks/useAppDispatch'
 import useAppSelector from '../../hooks/useAppSelector'
 import { updatePersonal } from '../../store/ducks/user/thunks'
 import { IPersonalData } from '../../types'
-import Button from '../UI/Button'
-import Input from '../UI/Input'
-import Form from '../UI/Form'
+import Button from '../../UI/Button'
+import Input from '../../UI/Input'
+import Form from '../../UI/Form'
 import { REGEX } from '../../constants'
 
 const Personal = () => {

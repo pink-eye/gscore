@@ -3,9 +3,9 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import withAuth from '../../hocs/withAuth'
 import withProduct, { ComponentPropsWithProduct } from '../../hocs/withProduct'
-import Button from '../UI/Button'
-import Check from '../UI/Check'
-import Heading from '../UI/Heading'
+import Button from '../../UI/Button'
+import Check from '../../UI/Check'
+import Heading from '../../UI/Heading'
 
 const Start: FC<ComponentPropsWithProduct> = ({ product }) => {
 	const handleClick = () => router.push('/my-subscriptions')

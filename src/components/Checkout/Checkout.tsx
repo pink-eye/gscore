@@ -5,10 +5,10 @@ import withProduct, { ComponentPropsWithProduct } from '../../hocs/withProduct'
 import useAppDispatch from '../../hooks/useAppDispatch'
 import useAppSelector from '../../hooks/useAppSelector'
 import { buy } from '../../store/ducks/payment/thunks'
-import Button from '../UI/Button'
-import Check from '../UI/Check'
-import Heading from '../UI/Heading'
-import Stepper from '../UI/Stepper'
+import Button from '../../UI/Button'
+import Check from '../../UI/Check'
+import Heading from '../../UI/Heading'
+import Stepper from '../../UI/Stepper'
 
 const Checkout: FC<ComponentPropsWithProduct> = ({ product }) => {
 	const { isLoading, error, data } = useAppSelector(state => state.payment)

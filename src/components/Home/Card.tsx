@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { IProduct } from '../../types'
-import Divider from '../UI/Divider'
-import Button from '../UI/Button'
+import Divider from '../../UI/Divider'
+import Button from '../../UI/Button'
 import { useRouter } from 'next/router'
 import useActions from '../../hooks/useActions'
 

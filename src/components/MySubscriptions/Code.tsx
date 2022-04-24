@@ -4,9 +4,9 @@ import useAppDispatch from '../../hooks/useAppDispatch'
 import useMediaQuery from '../../hooks/useMediaQuery'
 import { activateCode } from '../../store/ducks/code/thunks'
 import { ICode } from '../../types'
-import Button from '../UI/Button'
-import Checkbox from '../UI/Checkbox'
-import Status from '../UI/Status'
+import Button from '../../UI/Button'
+import Checkbox from '../../UI/Checkbox'
+import Status from '../../UI/Status'
 
 interface Props extends ICode {
 	onSelect: (code: ICode, isSelected: boolean) => void

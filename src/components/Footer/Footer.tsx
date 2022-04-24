@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Container from '../UI/Container'
-import Divider from '../UI/Divider'
+import Container from '../../UI/Container'
+import Divider from '../../UI/Divider'
 
 const Footer = () => {
 	return (

@@ -2,8 +2,8 @@ import dynamic from 'next/dynamic'
 import React from 'react'
 import styled from 'styled-components'
 import useAppSelector from '../../hooks/useAppSelector'
-import Container from '../UI/Container'
-import TextLink from '../UI/TextLink'
+import Container from '../../UI/Container'
+import TextLink from '../../UI/TextLink'
 import useMediaQuery from '../../hooks/useMediaQuery'
 
 const HeaderNav = dynamic(() => import('./HeaderNav'))

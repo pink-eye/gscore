@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import useActions from '../../hooks/useActions'
 import { useGetMeQuery } from '../../store/ducks/user/api'
-import Popup from '../UI/Popup'
+import Popup from '../../UI/Popup'
 
 const HeaderNav = () => {
 	const { isLoading, data } = useGetMeQuery(null)

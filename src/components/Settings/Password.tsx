@@ -5,9 +5,9 @@ import useAppDispatch from '../../hooks/useAppDispatch'
 import useAppSelector from '../../hooks/useAppSelector'
 import { updatePassword } from '../../store/ducks/user/thunks'
 import { IPasswordsData } from '../../types'
-import Button from '../UI/Button'
-import Input from '../UI/Input'
-import Form from '../UI/Form'
+import Button from '../../UI/Button'
+import Input from '../../UI/Input'
+import Form from '../../UI/Form'
 
 const Password = () => {
 	const { isLoading, error } = useAppSelector(state => state.user)

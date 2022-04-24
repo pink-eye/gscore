@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { ICode } from '../../types'
 import Code from './Code'
-import Button from '../UI/Button'
+import Button from '../../UI/Button'
 import useAppDispatch from '../../hooks/useAppDispatch'
 import { manageCodes } from '../../store/ducks/code/thunks'
 

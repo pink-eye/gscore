@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { FC, useEffect } from 'react'
-import Preloader from '../components/UI/Preloader'
+import Preloader from '../UI/Preloader'
 import useAppSelector from '../hooks/useAppSelector'
 
 const withNoAuth = (Component: FC) => {

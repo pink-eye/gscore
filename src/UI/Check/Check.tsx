@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ComponentPropsWithProduct } from '../../../hocs/withProduct'
+import { ComponentPropsWithProduct } from '../../hocs/withProduct'
 import Divider from '../Divider'
 
 interface Props extends ComponentPropsWithProduct {
