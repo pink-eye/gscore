@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
+import React, { FC, useRef } from 'react'
 import styled from 'styled-components'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
 import useToggle from '../../hooks/useToggle'
 
 interface Props {
@@ -8,13 +9,13 @@ interface Props {
 }
 
 const Popup: FC<Props> = props => {
+	const ref = useRef(null)
 	const [isOpened, toggle] = useToggle(false)
-
-	const handleClick = () => toggle()
+	useOnClickOutside(ref, () => isOpened && toggle())
 
 	return (
-		<Root>
-			<Head $isOpened={isOpened} onClick={handleClick}>
+		<Root ref={ref}>
+			<Head $isOpened={isOpened} onClick={toggle}>
 				{props.head}
 				<img src="/img/popup-arrow.svg"></img>
 			</Head>

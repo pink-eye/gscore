@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import useToggle from '../../hooks/useToggle'
 
@@ -9,11 +9,9 @@ interface Props {
 const Dropdown: FC<Props> = props => {
 	const [isOpened, toggle] = useToggle(false)
 
-	const handleClick = () => toggle()
-
 	return (
 		<Root>
-			<Head $isOpened={isOpened} onClick={handleClick}>
+			<Head $isOpened={isOpened} onClick={toggle}>
 				{props.head}
 				<img src="/img/popup-arrow.svg"></img>
 			</Head>

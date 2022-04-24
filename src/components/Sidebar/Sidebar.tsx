@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Divider from '../../UI/Divider'
 import useActions from '../../hooks/useActions'
 import { useGetMeQuery } from '../../store/ducks/user/api'
 import Dropdown from './Dropdown'
+import useOnClickOutside from '../../hooks/useOnClickOutside'
+import useAppSelector from '../../hooks/useAppSelector'
 
 const Sidebar = () => {
+	const isOpened = useAppSelector(state => state.sidebar)
+	const ref = useRef(null)
 	const { toggleSidebar } = useActions()
+	useOnClickOutside(ref, () => isOpened && toggleSidebar())
 	const { isLoading, data } = useGetMeQuery(null)
 	const { clearToken } = useActions()
 
@@ -16,7 +21,7 @@ const Sidebar = () => {
 	const logOut = () => clearToken()
 
 	return (
-		<Root>
+		<Root ref={ref}>
 			<div>
 				<Button style={{ paddingBlock: '0' }} onClick={toggleSidebar}>
 					<img src="/img/close.svg"></img>
