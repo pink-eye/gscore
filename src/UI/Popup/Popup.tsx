@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
+import useToggle from '../../hooks/useToggle'
 
 interface Props {
 	head: string
@@ -7,9 +8,9 @@ interface Props {
 }
 
 const Popup: FC<Props> = props => {
-	const [isOpened, setIsOpened] = useState(false)
+	const [isOpened, toggle] = useToggle(false)
 
-	const handleClick = () => setIsOpened(prevValue => !prevValue)
+	const handleClick = () => toggle()
 
 	return (
 		<Root>

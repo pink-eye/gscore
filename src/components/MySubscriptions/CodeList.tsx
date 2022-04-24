@@ -5,6 +5,7 @@ import Code from './Code'
 import Button from '../../UI/Button'
 import useAppDispatch from '../../hooks/useAppDispatch'
 import { manageCodes } from '../../store/ducks/code/thunks'
+import useToggle from '../../hooks/useToggle'
 
 interface Props {
 	codes: ICode[]
@@ -12,14 +13,14 @@ interface Props {
 
 const CodeList: FC<Props> = ({ codes }) => {
 	const dispatch = useAppDispatch()
-	const [hasSelected, setHasSelected] = useState(false)
-	const [selectedCodes, setSelectedCodes] = useState([])
+	const [hasSelected, toggle] = useToggle(false)
+	const [selectedCodes, setSelectedCodes] = useState<Array<number>>([])
 
 	useEffect(() => {
 		if (selectedCodes.length) {
-			!hasSelected && setHasSelected(true)
+			!hasSelected && toggle()
 		} else {
-			hasSelected && setHasSelected(false)
+			hasSelected && toggle()
 		}
 	}, [selectedCodes])
 

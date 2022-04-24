@@ -1,7 +1,8 @@
-import React, { FC, useState, ChangeEvent } from 'react'
+import React, { FC, ChangeEvent } from 'react'
 import styled from 'styled-components'
 import useAppDispatch from '../../hooks/useAppDispatch'
 import useMediaQuery from '../../hooks/useMediaQuery'
+import useToggle from '../../hooks/useToggle'
 import { activateCode } from '../../store/ducks/code/thunks'
 import { ICode } from '../../types'
 import Button from '../../UI/Button'
@@ -14,13 +15,13 @@ interface Props extends ICode {
 
 const Code: FC<Props> = ({ onSelect, ...props }) => {
 	const matches = useMediaQuery('(min-width: 64rem)')
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, toggle] = useToggle(false)
 	const dispatch = useAppDispatch()
 
 	const handleClick = () => {
-		setIsLoading(true)
+		!isLoading && toggle(true)
 		dispatch(activateCode({ code: props.code })).then(() => {
-			setIsLoading(false)
+			isLoading && toggle(false)
 			location.reload()
 		})
 	}
