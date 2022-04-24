@@ -1,18 +1,14 @@
 import React from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
-import useAppDispatch from '../../hooks/useAppDispatch'
-import useAppSelector from '../../hooks/useAppSelector'
-import { updatePassword } from '../../store/ducks/user/thunks'
 import { IPasswordsData } from '../../types'
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
 import Form from '../../UI/Form'
+import { useUpdatePasswordMutation } from '../../store/ducks/user/api'
 
 const Password = () => {
-	const { isLoading, error } = useAppSelector(state => state.user)
-
-	const dispatch = useAppDispatch()
+	const [updatePassword, { isLoading, error }] = useUpdatePasswordMutation()
 
 	const { handleSubmit, control } = useForm<IPasswordsData>({
 		mode: 'onTouched',
@@ -23,9 +19,7 @@ const Password = () => {
 	})
 
 	const onSubmit: SubmitHandler<IPasswordsData> = data => {
-		dispatch(updatePassword(data)).then(() => {
-			location.reload()
-		})
+		updatePassword(data)
 	}
 
 	return (

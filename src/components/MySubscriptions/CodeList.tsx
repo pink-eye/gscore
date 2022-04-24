@@ -3,16 +3,16 @@ import styled from 'styled-components'
 import { ICode } from '../../types'
 import Code from './Code'
 import Button from '../../UI/Button'
-import useAppDispatch from '../../hooks/useAppDispatch'
-import { manageCodes } from '../../store/ducks/code/thunks'
 import useToggle from '../../hooks/useToggle'
+import { useGetCodesQuery } from '../../store/ducks/code/api'
+import Preloader from '../../UI/Preloader'
 
 interface Props {
-	codes: ICode[]
+	subscribeId: number
 }
 
-const CodeList: FC<Props> = ({ codes }) => {
-	const dispatch = useAppDispatch()
+const CodeList: FC<Props> = ({ subscribeId }) => {
+	const { isLoading, data } = useGetCodesQuery(null)
 	const [hasSelected, toggle] = useToggle(false)
 	const [selectedCodes, setSelectedCodes] = useState<Array<number>>([])
 
@@ -24,6 +24,8 @@ const CodeList: FC<Props> = ({ codes }) => {
 		}
 	}, [selectedCodes])
 
+	if (isLoading) return <Preloader />
+
 	const handleSelect = (code: ICode, isSelected: boolean) => {
 		if (isSelected) {
 			setSelectedCodes([...selectedCodes, code.id])
@@ -34,16 +36,14 @@ const CodeList: FC<Props> = ({ codes }) => {
 
 	const handleClick = () => {
 		if (!selectedCodes.length) return
-
-		dispatch(manageCodes({ codesIds: selectedCodes, subscribeId: codes[0].subscribeId })).then(data => {
-			console.log(data)
-		})
 	}
+
+	const filteredData = data.filter((item: ICode) => item.subscribeId === subscribeId)
 
 	return (
 		<Root>
 			<List>
-				{codes.map((item: ICode) => (
+				{filteredData.map((item: ICode) => (
 					<li key={item.id}>
 						<Code {...item} onSelect={handleSelect} />
 					</li>

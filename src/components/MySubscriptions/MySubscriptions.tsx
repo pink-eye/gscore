@@ -14,7 +14,7 @@ const SubscriptionList = dynamic(() => import('./SubscriptionList'))
 const CodeList = dynamic(() => import('./CodeList'))
 
 const MySubscriptions = () => {
-	const { isLoading, data, error } = useGetSelfSubscribesQuery(null)
+	const { isLoading, data } = useGetSelfSubscribesQuery(null)
 	const [currentIndex, setCurrentIndex] = useState(1)
 	const router = useRouter()
 
@@ -43,7 +43,7 @@ const MySubscriptions = () => {
 							onSlideChange={handleSlideChange}
 						/>
 					</Container>
-					<CodeList codes={data[currentIndex - 1].codes} />
+					<CodeList subscribeId={data[currentIndex - 1].id} />
 				</>
 			)}
 		</>

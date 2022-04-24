@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react'
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import styled from 'styled-components'
-import useAppDispatch from '../../hooks/useAppDispatch'
-import useAppSelector from '../../hooks/useAppSelector'
-import { updatePersonal } from '../../store/ducks/user/thunks'
 import { IPersonalData } from '../../types'
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
 import Form from '../../UI/Form'
 import { REGEX } from '../../constants'
+import { useUpdatePersonalMutation } from '../../store/ducks/user/api'
 
 const Personal = () => {
-	const dispatch = useAppDispatch()
-	const { isLoading, error, data } = useAppSelector(state => state.user)
+	const [updatePersonal, { isLoading, data, error }] = useUpdatePersonalMutation()
 
 	const { handleSubmit, control } = useForm<IPersonalData>({
 		mode: 'onTouched',
@@ -22,14 +19,8 @@ const Personal = () => {
 		},
 	})
 
-	useEffect(() => {
-		if (!data) return
-
-		location.reload()
-	}, [data])
-
 	const onSubmit: SubmitHandler<IPersonalData> = data => {
-		dispatch(updatePersonal(data))
+		updatePersonal(data)
 	}
 
 	return (

@@ -4,9 +4,7 @@ import { SubmitHandler, useForm, Controller } from 'react-hook-form'
 import styled from 'styled-components'
 import withNoAuth from '../../hocs/withNoAuth'
 import useActions from '../../hooks/useActions'
-import useAppDispatch from '../../hooks/useAppDispatch'
 import useAppSelector from '../../hooks/useAppSelector'
-import { signIn } from '../../store/ducks/user/thunks'
 import { ILoginData } from '../../types'
 import Button from '../../UI/Button'
 import Heading from '../../UI/Heading'
@@ -14,12 +12,12 @@ import Input from '../../UI/Input'
 import Stepper from '../../UI/Stepper'
 import Form from '../../UI/Form'
 import { REGEX } from '../../constants'
+import { useSignInMutation } from '../../store/ducks/user/api'
 
 const Login = () => {
+	const [signIn, { isLoading, data, error }] = useSignInMutation()
 	const router = useRouter()
 	const { setToken } = useActions()
-	const dispatch = useAppDispatch()
-	const { isLoading, error, data } = useAppSelector(state => state.user)
 	const product = useAppSelector(state => state.product)
 
 	const { handleSubmit, control } = useForm<ILoginData>({
@@ -41,7 +39,7 @@ const Login = () => {
 	}, [data])
 
 	const onSubmit: SubmitHandler<ILoginData> = async formData => {
-		dispatch(signIn(formData))
+		signIn(formData)
 	}
 
 	return (

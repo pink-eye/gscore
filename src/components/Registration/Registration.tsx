@@ -4,9 +4,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import styled from 'styled-components'
 import withNoAuth from '../../hocs/withNoAuth'
 import useActions from '../../hooks/useActions'
-import useAppDispatch from '../../hooks/useAppDispatch'
 import useAppSelector from '../../hooks/useAppSelector'
-import { signUp } from '../../store/ducks/user/thunks'
 import { IRegistryData } from '../../types'
 import Button from '../../UI/Button'
 import Heading from '../../UI/Heading'
@@ -15,11 +13,11 @@ import Stepper from '../../UI/Stepper'
 import TextLink from '../../UI/TextLink'
 import Form from '../../UI/Form'
 import { REGEX } from '../../constants'
+import { useSignUpMutation } from '../../store/ducks/user/api'
 
 const Registration = () => {
 	const { setToken } = useActions()
-	const dispatch = useAppDispatch()
-	const { isLoading, error, data } = useAppSelector(state => state.user)
+	const [signUp, { isLoading, data, error }] = useSignUpMutation()
 	const product = useAppSelector(state => state.product)
 
 	const { handleSubmit, control } = useForm<IRegistryData>({
@@ -42,7 +40,7 @@ const Registration = () => {
 	}, [data])
 
 	const onSubmit: SubmitHandler<IRegistryData> = async formData => {
-		dispatch(signUp(formData))
+		signUp(formData)
 	}
 
 	return (
