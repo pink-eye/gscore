@@ -8,6 +8,7 @@ import { IPersonalData } from '../../types'
 import Button from '../UI/Button'
 import Input from '../UI/Input'
 import Form from '../UI/Form'
+import { REGEX } from '../../constants'
 
 const Personal = () => {
 	const dispatch = useAppDispatch()
@@ -31,9 +32,6 @@ const Personal = () => {
 		dispatch(updatePersonal(data))
 	}
 
-	const regexEmail =
-		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-
 	return (
 		<Root onSubmit={handleSubmit(onSubmit)} submitError={error}>
 			<FormLegend>Personal info</FormLegend>
@@ -48,7 +46,10 @@ const Personal = () => {
 			<Controller
 				control={control}
 				name="email"
-				rules={{ required: 'Email is required', pattern: { value: regexEmail, message: 'Email is not valid' } }}
+				rules={{
+					required: 'Email is required',
+					pattern: { value: REGEX.email, message: 'Email is not valid' },
+				}}
 				render={({ field, fieldState }) => {
 					return <Input type="text" placeholder="Email" {...field} ref={null} error={fieldState.error} />
 				}}

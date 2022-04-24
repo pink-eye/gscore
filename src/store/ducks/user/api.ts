@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { RootState } from '../..'
+import { BASE_URL } from '../../../constants'
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: 'https://gscore-back.herokuapp.com/api',
+	baseUrl: BASE_URL,
 	prepareHeaders: (headers, state) => {
 		const {
 			token: { value },

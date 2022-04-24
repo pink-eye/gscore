@@ -13,6 +13,7 @@ import Heading from '../UI/Heading'
 import Input from '../UI/Input'
 import Stepper from '../UI/Stepper'
 import Form from '../UI/Form'
+import { REGEX } from '../../constants'
 
 const Login = () => {
 	const router = useRouter()
@@ -43,9 +44,6 @@ const Login = () => {
 		dispatch(signIn(formData))
 	}
 
-	const regexEmail =
-		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-
 	return (
 		<Root>
 			<Stepper activeIndex={1} style={{ marginBottom: '64px' }} />
@@ -56,7 +54,7 @@ const Login = () => {
 					name="email"
 					rules={{
 						required: 'Email is required',
-						pattern: { value: regexEmail, message: 'Email is not valid' },
+						pattern: { value: REGEX.email, message: 'Email is not valid' },
 					}}
 					render={({ field, fieldState }) => {
 						return <Input type="text" placeholder="Email" {...field} ref={null} error={fieldState.error} />

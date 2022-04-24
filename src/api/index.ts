@@ -2,7 +2,7 @@ import axios from 'axios'
 import { IUser } from '../store/ducks/user/types'
 import { IToken } from '../store/ducks/token/types'
 import { IPasswordsData, IPersonalData } from '../types'
-import API_PATHS from './constants'
+import { API_PATHS } from '../constants'
 
 const GScoreApi = () => {
 	const token: IToken = {

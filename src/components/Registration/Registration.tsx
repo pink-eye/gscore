@@ -14,6 +14,7 @@ import Input from '../UI/Input'
 import Stepper from '../UI/Stepper'
 import TextLink from '../UI/TextLink'
 import Form from '../UI/Form'
+import { REGEX } from '../../constants'
 
 const Registration = () => {
 	const { setToken } = useActions()
@@ -44,9 +45,6 @@ const Registration = () => {
 		dispatch(signUp(formData))
 	}
 
-	const regexEmail =
-		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-
 	return (
 		<Root>
 			<Stepper activeIndex={0} style={{ marginBottom: '64px' }} />
@@ -66,7 +64,7 @@ const Registration = () => {
 				<Controller
 					control={control}
 					name="email"
-					rules={{ required: 'Email is required', pattern: regexEmail }}
+					rules={{ required: 'Email is required', pattern: REGEX.email }}
 					render={({ field, fieldState }) => {
 						return <Input type="text" placeholder="Email" {...field} ref={null} error={fieldState.error} />
 					}}
