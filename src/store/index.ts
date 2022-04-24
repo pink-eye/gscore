@@ -1,17 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { userReducer, tokenReducer, productReducer, paymentReducer, codeReducer, sidebarReducer } from './ducks'
+import { tokenReducer, productReducer, sidebarReducer } from './ducks'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import userApi from './ducks/user/api'
-import authMiddleware from './middleware'
+import paymentApi from './ducks/payment/api'
+import codeApi from './ducks/code/api'
 
 const combinedReducer = combineReducers({
 	[userApi.reducerPath]: userApi.reducer,
+	[paymentApi.reducerPath]: paymentApi.reducer,
+	[codeApi.reducerPath]: codeApi.reducer,
 	token: tokenReducer,
-	user: userReducer,
 	product: productReducer,
-	payment: paymentReducer,
-	code: codeReducer,
 	sidebar: sidebarReducer,
 })
 
@@ -30,7 +30,10 @@ export const store = configureStore({
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: false,
-		}).concat(authMiddleware),
+		})
+			.concat(userApi.middleware)
+			.concat(paymentApi.middleware)
+			.concat(codeApi.middleware),
 })
 
 export const persistor = persistStore(store)
