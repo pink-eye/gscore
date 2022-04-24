@@ -4,9 +4,11 @@ import { RootState } from '../..'
 const baseQuery = fetchBaseQuery({
 	baseUrl: 'https://gscore-back.herokuapp.com/api',
 	prepareHeaders: (headers, state) => {
-		const { token } = state.getState() as RootState
+		const {
+			token: { value },
+		} = state.getState() as RootState
 
-		if (token) headers.set('authorization', `Bearer ${token}`)
+		if (value) headers.set('authorization', `Bearer ${value}`)
 
 		return headers
 	},

@@ -6,13 +6,13 @@ import useAppSelector from '../hooks/useAppSelector'
 const withAuth = (Component: FC) => {
 	const AuthenticatedComponent = () => {
 		const router = useRouter()
-		const token = useAppSelector(state => state.token)
+		const { value } = useAppSelector(state => state.token)
 
 		useEffect(() => {
-			!token && router.push('/registry')
-		}, [token])
+			!value && router.push('/registry')
+		}, [value])
 
-		return token ? <Component /> : <Preloader />
+		return value ? <Component /> : <Preloader />
 	}
 
 	return AuthenticatedComponent

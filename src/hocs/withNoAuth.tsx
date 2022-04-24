@@ -6,13 +6,13 @@ import useAppSelector from '../hooks/useAppSelector'
 const withNoAuth = (Component: FC) => {
 	const NotAuthenticatedComponent = () => {
 		const router = useRouter()
-		const token = useAppSelector(state => state.token)
+		const { value } = useAppSelector(state => state.token)
 
 		useEffect(() => {
-			token && router.push('/my-subscriptions')
-		}, [token])
+			value && router.push('/my-subscriptions')
+		}, [value])
 
-		return !token ? <Component /> : <Preloader />
+		return !value ? <Component /> : <Preloader />
 	}
 
 	return NotAuthenticatedComponent

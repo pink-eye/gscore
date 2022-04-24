@@ -1,14 +1,13 @@
 import axios from 'axios'
 import { IUser } from '../store/ducks/user/types'
+import { IToken } from '../store/ducks/token/types'
 import { IPasswordsData, IPersonalData } from '../types'
 import API_PATHS from './constants'
 
-interface Params {
-	token?: string
-}
-
 const GScoreApi = () => {
-	let token: string = null
+	const token: IToken = {
+		value: null,
+	}
 
 	const axiosAuth = () =>
 		axios.create({
@@ -16,7 +15,7 @@ const GScoreApi = () => {
 			headers: { Authorization: `Bearer ${token}` },
 		})
 
-	const setToken = (params: Params = {}) => (token = params.token)
+	const setToken = (params: IToken) => (token.value = params.value)
 
 	// USERS
 

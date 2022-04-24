@@ -5,7 +5,7 @@ import useAppSelector from '../hooks/useAppSelector'
 import { IProduct } from '../types'
 
 export interface ComponentPropsWithProduct {
-	product?: IProduct
+	product: IProduct
 }
 
 const withProduct = (Component: FC<ComponentPropsWithProduct>) => {
@@ -14,10 +14,10 @@ const withProduct = (Component: FC<ComponentPropsWithProduct>) => {
 		const product = useAppSelector(state => state.product)
 
 		useEffect(() => {
-			!product && router.push('/')
+			!product.hasOwnProperty('id') && router.push('/')
 		}, [])
 
-		return product ? <Component product={product} /> : <Preloader />
+		return product.hasOwnProperty('id') ? <Component product={product} /> : <Preloader />
 	}
 
 	return ProductComponent

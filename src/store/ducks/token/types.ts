@@ -1,1 +1,1 @@
-export type IToken = string
+export type IToken = { value: string | null }

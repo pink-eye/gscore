@@ -33,7 +33,7 @@ const Registration = () => {
 	useEffect(() => {
 		if (!data) return
 
-		setToken(data.token)
+		setToken({ value: data.token })
 
 		if (product) {
 			router.push('/checkout')

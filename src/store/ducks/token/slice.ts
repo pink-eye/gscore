@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IToken } from './types'
 
-const initialState: IToken = null
+const initialState = <IToken>{}
 
 export const tokenSlice = createSlice({
 	name: 'token',
 	initialState,
 	reducers: {
-		setToken: (state, action: PayloadAction<IToken>) => action.payload,
+		setToken: (state, action: PayloadAction<IToken>): IToken => action.payload,
 		clearToken: () => initialState,
 	},
 })
