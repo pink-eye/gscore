@@ -10,7 +10,7 @@ const HeaderNav = dynamic(() => import('./HeaderNav'))
 const Burger = dynamic(() => import('./Burger'))
 
 const Header = () => {
-	const token = useAppSelector(state => state.token)
+	const { value } = useAppSelector(state => state.token)
 	const matches = useMediaQuery('(min-width: 48rem)')
 
 	return (
@@ -20,7 +20,7 @@ const Header = () => {
 					<TextLink href="/">
 						<img src="/img/logo.svg" alt="The logo of company" />
 					</TextLink>
-					{token && matches ? <HeaderNav /> : <Burger />}
+					{value && <>{matches ? <HeaderNav /> : <Burger />}</>}
 				</HeaderContainer>
 			</Container>
 		</Root>
