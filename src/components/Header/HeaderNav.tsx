@@ -18,7 +18,7 @@ const HeaderNav = () => {
 			<Link href={'/my-subscriptions'}>
 				<PopupBtn>My subscriptions</PopupBtn>
 			</Link>
-			<Popup head={data.username}>
+			<Popup head={data?.username}>
 				<PopupList>
 					<li>
 						<Link href={'/settings'}>
