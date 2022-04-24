@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Settings from '../../src/components/Settings'
-import Container from '../../src/components/UI/Container'
+import Container from '../../src/UI/Container'
 
 const SettingsPage: NextPage = () => {
 	return (

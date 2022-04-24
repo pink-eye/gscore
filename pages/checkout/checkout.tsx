@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Container from '../../src/components/UI/Container'
+import Container from '../../src/UI/Container'
 import Checkout from '../../src/components/Checkout'
 import Head from 'next/head'
 

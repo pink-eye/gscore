@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Start from '../../src/components/Start'
-import Container from '../../src/components/UI/Container'
+import Container from '../../src/UI/Container'
 
 const StartPage: NextPage = () => {
 	return (

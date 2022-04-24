@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Container from '../../src/components/UI/Container'
-import Heading from '../../src/components/UI/Heading'
+import Container from '../../src/UI/Container'
+import Heading from '../../src/UI/Heading'
 
 const Error: NextPage = () => {
 	return (

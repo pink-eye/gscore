@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Registration from '../../src/components/Registration'
-import Container from '../../src/components/UI/Container'
+import Container from '../../src/UI/Container'
 
 const RegistrationPage: NextPage = () => {
 	return (

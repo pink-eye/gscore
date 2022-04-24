@@ -2,7 +2,7 @@ import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import Home from '../src/components/Home'
 import gscoreApi from '../src/api'
 import Head from 'next/head'
-import Container from '../src/components/UI/Container'
+import Container from '../src/UI/Container'
 
 const HomePage: NextPage = ({ products }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 	return (
