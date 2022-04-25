@@ -10,7 +10,7 @@ import { useUpdatePasswordMutation } from '../../store/ducks/user/api'
 const Password = () => {
 	const [updatePassword, { isLoading, error }] = useUpdatePasswordMutation()
 
-	const { handleSubmit, control } = useForm<IPasswordsData>({
+	const { handleSubmit, control, reset } = useForm<IPasswordsData>({
 		mode: 'onTouched',
 		defaultValues: {
 			currentPassword: '',
@@ -19,7 +19,7 @@ const Password = () => {
 	})
 
 	const onSubmit: SubmitHandler<IPasswordsData> = data => {
-		updatePassword(data)
+		updatePassword(data).then(() => reset())
 	}
 
 	return (

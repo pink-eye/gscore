@@ -9,9 +9,9 @@ import { REGEX } from '../../constants'
 import { useUpdatePersonalMutation } from '../../store/ducks/user/api'
 
 const Personal = () => {
-	const [updatePersonal, { isLoading, data, error }] = useUpdatePersonalMutation()
+	const [updatePersonal, { isLoading, error }] = useUpdatePersonalMutation()
 
-	const { handleSubmit, control } = useForm<IPersonalData>({
+	const { handleSubmit, control, reset } = useForm<IPersonalData>({
 		mode: 'onTouched',
 		defaultValues: {
 			username: '',
@@ -20,7 +20,7 @@ const Personal = () => {
 	})
 
 	const onSubmit: SubmitHandler<IPersonalData> = data => {
-		updatePersonal(data)
+		updatePersonal(data).then(() => reset())
 	}
 
 	return (
